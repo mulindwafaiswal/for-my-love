@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+      background: #210711;
+    }
+
+    .photo-collage {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: #210711;
+      display: grid;
+      grid-template-columns: 31% 38% 31%;
+      grid-template-rows: 50% 50%;
+      gap: 0;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.76;
+      filter: saturate(1.08) contrast(1.04);
+      animation: softMove 14s ease-in-out infinite alternate;
+    }
+
+    .photo.one {
+      grid-column: 1;
+      grid-row: 1;
+      object-position: center center;
+    }
+
+    .photo.two {
+      grid-column: 2;
+      grid-row: 1;
+      object-position: center center;
+      animation-delay: 1s;
+    }
+
+    .photo.three {
+      grid-column: 3;
+      grid-row: 1;
+      object-position: center center;
+      animation-delay: 2s;
+    }
+
+    .photo.four {
+      grid-column: 1;
+      grid-row: 2;
+      object-position: center center;
+      animation-delay: 1.7s;
+    }
+
+    .photo.five {
+      grid-column: 2;
+      grid-row: 2;
+      object-position: center center;
+      animation-delay: 2.5s;
+    }
+
+    .photo.six {
+      grid-column: 3;
+      grid-row: 2;
+      object-position: center center;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes softMove {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+
+    .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        linear-gradient(
+        135deg,
+        rgba(255, 120, 170, 0.12),
+        rgba(120, 20, 60, 0.18),
+        rgba(255, 170, 200, 0.10)
+        );
+    backdrop-filter: blur(0.2px);
+    }
+
+    .center-glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(circle at center, rgba(255, 151, 194, 0.2), transparent 38%);
+      pointer-events: none;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      color: rgba(255, 155, 194, 0.82);
+      animation: floatUp 8s linear infinite;
+      font-size: 22px;
+      text-shadow: 0 0 18px rgba(255, 170, 202, 0.85);
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+      text-align: center;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: rgba(65, 18, 38, 0.72);
+      border: 1px solid rgba(255, 180, 212, 0.42);
+      border-radius: 30px;
+      padding: 36px 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 90px rgba(0, 0, 0, 0.55);
+      animation: appear 0.9s ease;
+    }
+
+    @keyframes appear {
+      from {
+        transform: translateY(25px) scale(0.98);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .phase {
+      display: none;
+    }
+
+    .phase.active {
+      display: block;
+      animation: appear 0.8s ease;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      margin-bottom: 20px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: clamp(31px, 6.5vw, 62px);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(25px, 4vw, 42px);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: clamp(16px, 2.3vw, 20px);
+      line-height: 1.8;
+      color: #fff4f7;
+      margin: 0 auto 24px;
+      max-width: 630px;
+    }
+
+    .name, .highlight {
+      color: #ffd1dc;
+      text-shadow: 0 0 20px rgba(255, 209, 220, 0.75);
+    }
+
+    .script-text {
+      display: block;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(42px, 8vw, 78px);
+      color: #ff9fc4;
+      font-weight: 400;
+      margin-top: 5px;
+      text-shadow: 0 0 24px rgba(255, 159, 196, 0.7);
+    }
+
+    .divider {
+      width: 180px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ff9fc4, transparent);
+      margin: 16px auto 24px;
+      position: relative;
+    }
+
+    .divider::after {
+      content: "♥";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(65, 18, 38, 0.95);
+      color: #ff9fc4;
+      padding: 0 10px;
+      font-size: 14px;
+    }
+
+    .button {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffffff, #ffd6e4);
+      color: #7b1e3a;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+    }
+
+    .captcha-box {
+      max-width: 430px;
+      margin: 28px auto 10px;
+      background: linear-gradient(135deg, #fff, #ffe8f0);
+      color: #4b1730;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.32);
+      text-align: left;
+    }
+
+    .captcha-box input {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      accent-color: #7b1e3a;
+    }
+
+    .captcha-title {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      max-width: 520px;
+      margin: 25px auto 0;
+      text-align: left;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      padding: 15px 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .option input {
+      accent-color: #ffd1dc;
+      transform: scale(1.2);
+    }
+
+    .answer-note {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff4f7;
+      line-height: 1.7;
+    }
+
+    .hidden-message {
+      margin-top: 24px;
+      display: none;
+      animation: appear 0.8s ease;
+    }
+
+    .memory-boxes {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .memory {
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 180, 212, 0.25);
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 115px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      line-height: 1.5;
+      transition: transform 0.2s ease;
+    }
+
+    .memory:hover {
+      transform: translateY(-4px);
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 14px;
+      color: #ffe5ec;
+    }
+
+    @media (max-width: 800px) {
+      .photo-collage {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: repeat(3, 33.333%);
+      }
+
+      .photo.one {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .photo.two {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .photo.three {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .photo.four {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .photo.five {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      .photo.six {
+        grid-column: 2;
+        grid-row: 3;
+      }
+
+      .memory-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="photo-collage">
+    <img class="photo one" src="photo1.jpeg" alt="Her photo" />
+    <img class="photo two" src="photo2.jpeg" alt="Her photo" />
+    <img class="photo three" src="photo3.jpeg" alt="Her photo" />
+    <img class="photo four" src="photo4.jpeg" alt="Her photo" />
+    <img class="photo five" src="photo5.jpeg" alt="Her photo" />
+    <img class="photo six" src="photo6.jpeg" alt="Her photo" />
+  </div>
+  <div class="overlay"></div>
+  <div class="center-glow"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <main class="container">
+    <section class="card">
+      <div id="phase1" class="phase active">
+        <div class="tag">Security check</div>
+        <h1>Prove you are <span class="highlight">Faiswal's</span><span class="script-text">girlfriend♡</span></h1>
+        <div class="divider"></div>
+        <p>This file is protected because the contents are extremely important, highly classified, and maybe a little romantic.</p>
+
+        <label class="captcha-box">
+          <input type="checkbox" onchange="goToPhase(2)" />
+          <div class="captcha-title">I am Faiswal's girlfriend</div>
+        </label>
+      </div>
+
+      <div id="phase2" class="phase">
+        <div class="tag">Question 1 of 1</div>
+        <h2>Which of Faiswal's girlfriends are you?</h2>
+        <p>Please answer carefully. This question is extremely serious. 😭</p>
+
+        <div class="options">
+          <label class="option"><input type="radio" name="girlfriend" value="Melissa" /> A) Melissa</label>
+          <label class="option"><input type="radio" name="girlfriend" value="Leão" /> B) Leão</label>
+          <label class="option"><input type="radio" name="girlfriend" value="The love of his life" /> C) The love of his life</label>
+          <label class="option"><input type="radio" name="girlfriend" value="The one and only" /> D) The one and only</label>
+          <label class="option"><input type="radio" name="girlfriend" value="All of the above" /> E) All of the above</label>
+        </div>
+
+        <button class="button" onclick="checkAnswer()">Submit answer</button>
+
+        <div class="answer-note" id="answerNote"></div>
+        <button class="button" id="continueButton" style="display:none;" onclick="goToPhase(3)">Proceed</button>
+      </div>
+
+      <div id="phase3" class="phase">
+        <div class="tag">Okay, now the truth...</div>
+        <h1>Hey <span class="name">beautiful</span>,</h1>
+
+        <p>
+          You know, I was meant to be studying 😭 but I will revise maybe when I reach the dorm.
+          Anyways, your smile is really one of a kind, and with that blue shirt? OMG❤️. You look so beautiful.
+        </p>
+
+        <p>
+          I just wanted to make you smile for a second😂, because you have a way of making ordinary moments feel special without even trying.🫂🤗
+        </p>
+
+        <button class="button" onclick="showLoveMessage()">Click here, beautiful</button>
+
+        <div class="hidden-message" id="hiddenMessage">
+          <p>
+            You make my life warmer, softer, and so much better. I hope this reminds you that you are loved,
+            appreciated, and very, very special to me.❤️💕
+          </p>
+        </div>
+
+        <div class="memory-boxes">
+          <div class="memory">Your smile is honestly dangerous.</div>
+          <div class="memory">Talking to you makes my day better.</div>
+          <div class="memory">You are my favorite kind of peace.</div>
+        </div>
+
+        <footer>
+          Made with love by someone who should probably be revising 😭❤️
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function goToPhase(number) {
+      document.querySelectorAll(".phase").forEach(phase => {
+        phase.classList.remove("active");
+      });
+      document.getElementById("phase" + number).classList.add("active");
+    }
+
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="girlfriend"]:checked');
+      const note = document.getElementById("answerNote");
+      const continueButton = document.getElementById("continueButton");
+
+      if (!selected) {
+        note.style.display = "block";
+        note.innerHTML = "You have to choose one answer, beautiful 😭";
+        return;
+      }
+
+      note.style.display = "block";
+      continueButton.style.display = "inline-block";
+
+      if (selected.value === "All of the above") {
+        note.innerHTML = "Correct. Perfect. Excellent. 100 marks. This is the only answer the system fully accepts. ❤️";
+      } else {
+        note.innerHTML = "That answer is not entirely wrong, but the system believes the best answer is actually <b>All of the above</b>. We shall proceed anyway because you are too beautiful to fail. 😭❤️";
+      }
+    }
+
+    function showLoveMessage() {
+      const message = document.getElementById("hiddenMessage");
+      message.style.display = "block";
+    }
+
+    const heartsContainer = document.getElementById("hearts");
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.3 ? "❤️" : "💕";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 5 + "s";
+      heart.style.fontSize = Math.random() * 22 + 14 + "px";
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 9000);
+    }
+
+    setInterval(createHeart, 430);
+  </script>
+</body>
+</html>
